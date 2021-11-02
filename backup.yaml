@@ -20,6 +20,6 @@
          filename: "{{ ansible_net_hostname }}_{{ ansible_host }}.cfg"
          #Please change /home/hawar/Desktop to your direcotry
          #Every time create a new directory under named date and time
-         dir_path: /root/{{ date.stdout }}_at_{{ time.stdout }}
+         dir_path: /root/respaldos/{{ date.stdout }}_at_{{ time.stdout }}
     - name: Tasks done
       debug: msg="All tasks has been done on {{ date.stdout }} at {{ time.stdout }}."
