@@ -1,0 +1,22 @@
+# Filename: get_config.yaml
+
+- name: Demonstration of the get_config Ansible module
+  gather_facts: false
+  hosts: juniper
+  tasks:
+    - name: Execute the get_config RPC
+      ansible.netcommon.netconf_get:
+        source: running
+        display: json
+      register: result
+#    - name: Print the configuration as JSON
+#      debug:
+#        var: result.output
+#        register: result
+    - name: Guardar Archivo
+      junipernetworks.junos.junos_config:
+        backup: yes
+        backup_options:
+          dir_path: /root/respaldos/juniper/
+          backup_format: json
+          filename: respaldo1
