@@ -1,0 +1,45 @@
+- name: Creacion de vlan
+  hosts: gns3-ios
+  connection: network_cli
+  gather_facts: false
+
+  vars_prompt:
+    - name: "VLAN"
+      prompt: "Seleccionar Vlan ID" 
+      private: no
+    - name: "NAME"
+      prompt: "Seleccionar nombre"
+      private: no
+    - name: "DESCRIPCION"
+      prompt: "Anadir descripcion"
+      private: no
+    - name: "ESTADO"
+      prompt: "Active o Suspend"
+      private: no
+    - name: "SPAN"
+      prompt: " Habilitar SPAN/yes/no "
+      private: no
+    - name: "IP"
+      prompt: "Anadir IP"
+      private: no
+
+  tasks:
+
+    - name: Creando interfaz
+      cisco.ios.ios_vlans:
+        config:
+        - name: "{{ NAME }}"
+          vlan_id: "{{VLAN}}"
+          state: "{{ ESTADO }}"
+          remote_span: "{{ SPAN }}"
+    - name: Anadir descripcion
+      cisco.ios.ios_interfaces:
+        config:
+        - name: Vlan"{{ VLAN }}"
+          description: "{{ DESCRIPCION }}"
+    - name: Anadir Direccion
+      cisco.ios.ios_config:
+        lines:
+          - ip address {{ IP }}
+        parents: interface vlan {{ VLAN }}
+

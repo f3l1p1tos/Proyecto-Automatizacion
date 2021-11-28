@@ -1,0 +1,16 @@
+---
+- name: "Ejecucion de Roll back"
+  hosts: juniper
+  connection: local
+  gather_facts: no
+
+  vars_prompt:
+    - name: "ROLLBACK"
+      prompt: "ID de Rollback"
+      private: no
+
+  tasks:
+    - name: "Restaurar configuracion y aplicar commit"
+      junipernetworks.junos.junos_config:
+        rollback: "{{ ROLLBACK }}" 
+      register: result
