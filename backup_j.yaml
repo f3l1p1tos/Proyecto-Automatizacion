@@ -2,15 +2,6 @@
   gather_facts: false
   hosts: juniper
   tasks:
-    - name: Execute the get_config RPC
-      junipernetworks.junos.junos_config
-        source: running
-        display: json
-      register: result
-    - name: Print the configuration as JSON
-      debug:
-        var: result.output
-        register: result
     - name: Guardar Archivo
       junipernetworks.junos.junos_config:
         backup: yes

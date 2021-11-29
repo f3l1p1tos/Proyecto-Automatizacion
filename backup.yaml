@@ -1,25 +1,22 @@
-- name: Backup Cisco Router or Switch
+- name: Backup Cisco
   hosts: gns3-ios
   connection: network_cli
   gather_facts: false
   tasks:
-    - name: Accespt ansible net hostname
+    - name: Prueba de acceso
       ios_facts:
         gather_subset: all
-    - name: Get current date
+    - name: Obtener fecha actual
       local_action: command date +%Y-%b-%d
       register: date
-    - name: Get current time
+    - name: Obtener hora local
       local_action: command date +%H:%M
       register: time
-    - name: Get running-config and save it
+    - name: Realizar Back up
       ios_config:
        backup: yes
        backup_options:
-         #ansible_host = getting device IP, ansible_net_hostname = getting device hostname
          filename: "{{ ansible_net_hostname }}_{{ ansible_host }}.cfg"
-         #Please change /home/hawar/Desktop to your direcotry
-         #Every time create a new directory under named date and time
-         dir_path: /root/respaldos/{{ date.stdout }}_at_{{ time.stdout }}
+         dir_path: /root/respaldos/cisco/{{ date.stdout }}_at_{{ time.stdout }}
     - name: Tasks done
-      debug: msg="All tasks has been done on {{ date.stdout }} at {{ time.stdout }}."
+      debug: msg="Todas las tareas se han realizado correctamente el dia {{ date.stdout }} a las {{ time.stdout }}."
