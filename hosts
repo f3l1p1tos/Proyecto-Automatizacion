@@ -1,8 +1,13 @@
 [gns3-ios]
 SW1 ansible_user=felipe ansible_host=2222 entorno=ios ansible_host=192.168.122.71 ansible_ssh_pass=cisco ansible_network_os=ios
 SW2 ansible_user=prueba ansible_host=2222 entorno=ios ansible_host=192.168.122.72 ansible_ssh_pass=123 ansible_network_os=ios
+SW3 ansible_user=benjamin ansible_host=2222 entorno=ios ansible_host=192.168.122.73 ansible_ssh_pass=cisco ansible_network_os=ios
+SW4 ansible_user=cisco ansible_host=2222 entorno=ios ansible_host=192.168.122.74 ansible_ssh_pass=cisco ansible_network_os=ios
 
+[juniper]
+192.168.122.77
 
+<<<<<<< HEAD
 [juniper]
 192.168.122.77 ansible_connection=netconf ansible_network_os=junipernetworks.junos.junos ansible_netconf_user=Ansible ansible_ssh_user=Ansible ansible_ssh_pass=Juniper2021
 192.168.122.52 ansible_connection=netconf ansible_network_os=junipernetworks.junos.junos ansible_netconf_user=Benja ansible_ssh_user=Benja ansible_ssh_pass=Juniper2021
@@ -17,3 +22,12 @@ SW2 ansible_user=prueba ansible_host=2222 entorno=ios ansible_host=192.168.122.7
 #ansible_netconf_pass=Juniper2021
 #ansible_ssh_user=Ansible
 #ansible_ssh_pass=Juniper2021
+=======
+[juniper:vars]
+ansible_connection=netconf
+ansible_network_os=junipernetworks.junos.junos
+ansible_netconf_user=Ansible
+ansible_netconf_pass=Juniper2021
+ansible_ssh_user=Ansible
+ansible_ssh_pass=Juniper2021
+>>>>>>> 3231dbf4e88026c1215160e35a425ef929fd58b3
