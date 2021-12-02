@@ -1,0 +1,7 @@
+git+https://github.com/ryan-roemer/sphinx-bootstrap-theme.git#egg=sphinx-bootstrap-theme
+ansible
+six
+jxmlease
+xmltodict
+junos-eznc >= 2.5.4
+jsnapy>=1.3.4
